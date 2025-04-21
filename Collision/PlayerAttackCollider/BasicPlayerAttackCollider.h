@@ -1,0 +1,31 @@
+#ifndef BASIC_PLAYER_ATTACK_COLLIDER_H_
+#define BASIC_PLAYER_ATTACK_COLLIDER_H_
+
+#include "Collision/AttackCollider.h"
+
+//通常の攻撃クラス
+class BasicPlayerAttackCollider : public AttackCollider {
+public:
+
+	//コンストラクタ
+	BasicPlayerAttackCollider(
+		IWorld* world,						//ワールド
+		const BoundingSphere& collider,		//弾
+		const std::string& name,			//名前
+		const std::string& tag,				//タグ
+		const std::string& owner_tag = "",	//親の名前
+		const int damage = 1,				//ダメージ
+		const int stan_damage = 1,			//ダメージ
+		const float lifespan = 1.0f,		//寿命
+		const float delay = 0.0f			//遅延時間
+	);
+	//更新
+	void Update(float delta_time)override;
+	//描画
+	void Draw()const override;
+	//リアクション
+	void React(Actor& other)override;
+
+};
+
+#endif
